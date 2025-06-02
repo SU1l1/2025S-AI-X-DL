@@ -50,7 +50,6 @@
 
 ## 🛠️ 사용 기술
 - Python (Pandas, Numpy, Scikit-learn, Matplotlib/Seaborn)
-- Jupyter Notebook
 - (추가 라이브러리: XGBoost, LightGBM, etc.)
 
 ## 🏃‍♂️ 프로젝트 구조
