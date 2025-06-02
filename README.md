@@ -30,7 +30,6 @@
 ### 📂 데이터셋과 피처구성
 
 - **출처:** [Kaggle: employees-stress-level-dataset](https://www.kaggle.com/datasets/chanchalagorale/employees-stress-level-dataset/data)
-- **Train.csv:** (https://raw.githubusercontent.com/SU1l1/2025S-AI-X-DL/main/train.csv)
 
 | 피처명                    | 설명                                 | 예시                                            |
 |---------------------------|--------------------------------------|-------------------------------------------------|
