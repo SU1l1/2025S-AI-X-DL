@@ -55,6 +55,7 @@
 - (추가 라이브러리: XGBoost, LightGBM, etc.)
 
 ## 🏃‍♂️ 프로젝트 구조
+![stress_data_counts](https://github.com/user-attachments/assets/01a4ce7e-2eb2-441f-8591-20f5c952ca8a)
 
 
 ## 📝 주요 진행 내용
