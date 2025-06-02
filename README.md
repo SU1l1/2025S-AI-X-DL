@@ -28,23 +28,26 @@
 
 - 이를 통해 “이 지표들을 기반으로 개인별 스트레스 강도를 어느 정도 정확도로 예측할 수 있는가?”를 확인하고, 예측 결과가 유의미할 경우 실시간 스트레스 모니터링 시스템 개발의 가능성을 모색합니다.
 
-## 🗂️ 데이터셋과 피처구성
-- **출처:** (https://www.kaggle.com/datasets/chanchalagorale/employees-stress-level-dataset/data)
-| 피처명                               | 설명                       | 예시                                  |
-| --------------------------------- | ------------------------ | ----------------------------------- |
-| **Employee\_Id**                  | 직원 ID                    | 1001, 1002, ...                     |
-| **Avg\_Working\_Hours\_Per\_Day** | 하루 평균 근무 시간              | 8, 9, 10                            |
-| **Work\_From**                    | 근무 장소                    | Home(재택), Office(사무실), Hybrid(혼합)   |
-| **Work\_Pressure**                | 업무 압박(강도)                | High, Medium, Low                   |
-| **Manager\_Support**              | 관리자 지원 수준                | Excellent, Good, Poor               |
-| **Sleeping\_Habit**               | 수면 습관                    | Good, Average, Poor                 |
-| **Exercise\_Habit**               | 운동 습관                    | Regular, Occasionally, None         |
-| **Job\_Satisfaction**             | 직무 만족도                   | High, Medium, Low                   |
-| **Work\_Life\_Balance**           | 워라밸(일과 삶의 균형)            | Yes(균형 유지), No(균형 미흡)               |
-| **Social\_Person**                | 사교성 정도                   | Yes(활발), No(비활발)                    |
-| **Lives\_With\_Family**           | 가족과 동거 여부                | Yes(동거), No(미동거)                    |
-| **Working\_State**                | 근무/거주 지역(주 거주지)          | Delhi, Pune, Hyderabad, Karnataka 등 |
-| **Stress\_Level**                 | 스트레스 수준 (1\~5 정수, 예측 타겟) | 1, 2, 3, 4, 5                       |
+### 📂 데이터셋과 피처구성
+
+- **출처:** [Kaggle: employees-stress-level-dataset](https://www.kaggle.com/datasets/chanchalagorale/employees-stress-level-dataset/data)
+
+| 피처명                    | 설명                                 | 예시                                            |
+|---------------------------|--------------------------------------|-------------------------------------------------|
+| Employee_Id               | 직원 ID                              | 1001, 1002, ...                                 |
+| Avg_Working_Hours_Per_Day | 하루 평균 근무 시간                   | 8, 9, 10                                        |
+| Work_From                 | 근무 장소                            | Home(재택), Office(사무실), Hybrid(혼합)         |
+| Work_Pressure             | 업무 압박(강도)                      | High, Medium, Low                               |
+| Manager_Support           | 관리자 지원 수준                     | Excellent, Good, Poor                           |
+| Sleeping_Habit            | 수면 습관                            | Good, Average, Poor                             |
+| Exercise_Habit            | 운동 습관                            | Regular, Occasionally, None                     |
+| Job_Satisfaction          | 직무 만족도                          | High, Medium, Low                               |
+| Work_Life_Balance         | 워라밸(일과 삶의 균형)               | Yes(균형 유지), No(균형 미흡)                   |
+| Social_Person             | 사교성 정도                          | Yes(활발), No(비활발)                           |
+| Lives_With_Family         | 가족과 동거 여부                     | Yes(동거), No(미동거)                           |
+| Working_State             | 근무/거주 지역(주 거주지)           | Delhi, Pune, Hyderabad, Karnataka 등            |
+| Stress_Level              | 스트레스 수준 (1~5 정수, 예측 타겟)  | 1, 2, 3, 4, 5                                   |
+
 
 
 ## 🛠️ 사용 기술
