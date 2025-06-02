@@ -1,4 +1,6 @@
 # 직장인 라이프스타일 기반 스트레스 연관관계 예측
+![Kaggle 로고](https://upload.wikimedia.org/wikipedia/commons/7/7c/Kaggle_logo.png)
+
 
 ## 👨‍💻 팀원 소개
 
