@@ -11,18 +11,30 @@
 
 
 ## 📌 프로젝트 개요
-- 직장인의 다양한 라이프스타일(예: 수면, 운동, 식습관, 근무시간 등) 데이터를 바탕으로 스트레스 지수를 예측하고,
-- 주요 생활습관과 스트레스 수준 간의 상관관계를 분석합니다.
+- 직장인 스트레스 데이터셋을 바탕으로 어떤 요인이 가장 스트레스와 연관이 높은지 분석한다.
 
 ## 🏷️ 목적
-- 직장인들의 라이프스타일이 스트레스에 미치는 영향을 데이터 기반으로 파악
-- 스트레스 저감에 효과적인 행동 패턴 도출
+- 각 피처를 바탕으로 어떠한 요인이 스트레스에 큰영항을 주는지 분석하고
+- 스트레스 저감에 효과적인 행동 패턴 도출하여 본
 
-## 🗂️ 데이터셋
-- **출처:** (예: Kaggle, 공공데이터 등)
-- **구성:**  
-    - 라이프스타일(수면, 운동, 식습관, 근무형태 등)
-    - 스트레스 지수(설문/측정치 등)
+## 🗂️ 데이터셋과 피처구성
+- **출처:** (https://www.kaggle.com/datasets/chanchalagorale/employees-stress-level-dataset/data)
+| 피처명                               | 설명                       | 예시                                  |
+| --------------------------------- | ------------------------ | ----------------------------------- |
+| **Employee\_Id**                  | 직원 ID                    | 1001, 1002, ...                     |
+| **Avg\_Working\_Hours\_Per\_Day** | 하루 평균 근무 시간              | 8, 9, 10                            |
+| **Work\_From**                    | 근무 장소                    | Home(재택), Office(사무실), Hybrid(혼합)   |
+| **Work\_Pressure**                | 업무 압박(강도)                | High, Medium, Low                   |
+| **Manager\_Support**              | 관리자 지원 수준                | Excellent, Good, Poor               |
+| **Sleeping\_Habit**               | 수면 습관                    | Good, Average, Poor                 |
+| **Exercise\_Habit**               | 운동 습관                    | Regular, Occasionally, None         |
+| **Job\_Satisfaction**             | 직무 만족도                   | High, Medium, Low                   |
+| **Work\_Life\_Balance**           | 워라밸(일과 삶의 균형)            | Yes(균형 유지), No(균형 미흡)               |
+| **Social\_Person**                | 사교성 정도                   | Yes(활발), No(비활발)                    |
+| **Lives\_With\_Family**           | 가족과 동거 여부                | Yes(동거), No(미동거)                    |
+| **Working\_State**                | 근무/거주 지역(주 거주지)          | Delhi, Pune, Hyderabad, Karnataka 등 |
+| **Stress\_Level**                 | 스트레스 수준 (1\~5 정수, 예측 타겟) | 1, 2, 3, 4, 5                       |
+
 
 ## 🛠️ 사용 기술
 - Python (Pandas, Numpy, Scikit-learn, Matplotlib/Seaborn)
