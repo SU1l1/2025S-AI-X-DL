@@ -85,7 +85,7 @@
 - Python (Pandas, Numpy, Scikit-learn, Matplotlib/Seaborn)
 - (추가 라이브러리: XGBoost, LightGBM, etc.)
 
-## 📝 탐색적 데이터 분석(EDA) 및 RandomForest 기반 예측
+## 📝 RandomForest 알고리즘을 사용하여 스트레스 지수 예측
 
 ### 학습/검증 데이터 분리
 
@@ -163,14 +163,10 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-### RandomForest 모델을 이용한 예측 결과
-
-**Accuracy:** `0.2083`
-
-<details>
+###  RandomForest 모델을 이용한 예측 결과
+**Accuracy:** `0.2083`  
 <summary>📋 Classification Report</summary>
 
-```
               precision    recall  f1-score   support
 
            1       0.23      0.23      0.23       122
@@ -187,13 +183,13 @@ weighted avg       0.21      0.21      0.21       600
 <details>
 <summary>🔢 Confusion Matrix</summary>
 
-```
      28 18 26 23 27
      17 30 22 25 25
      28 24 21 21 24
      28 25 19 20 28
      23 26 19 27 26
 ```
+
 </details>
 **주요 기법:**
 
