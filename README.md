@@ -67,6 +67,11 @@
 | Working_State             | 근무/거주 지역(주 거주지)           | Delhi, Pune, Hyderabad, Karnataka 등            |
 | Stress_Level              | 스트레스 수준 (1~5 정수, 예측 타겟)  | 1, 2, 3, 4, 5                                   |
 
+- 클래스 불균형 확인
+  
+![클래스불균형](https://github.com/user-attachments/assets/81f899cd-7875-41fe-87bf-d7b2fc5bd701)
+
+결과: 1~5 레벨이 거의 동일한 빈도로 분포하고 있어서 클래스 불균형 우려는 적다.
 
 ## 🛠️ 사용 기술
 - Python (Pandas, Numpy, Scikit-learn, Matplotlib/Seaborn)
