@@ -73,6 +73,14 @@
 
 결과: 1~5 레벨이 거의 동일한 빈도로 분포하고 있어서 클래스 불균형 우려는 적다.
 
+- 클래스 불균형 확인
+  
+![상관관계 히트맵](https://github.com/user-attachments/assets/b8760d8b-f76c-4d94-a148-3fc48a98dba7)
+
+
+결과: Sleeping_Habit 과 Exercise_Habit Feature가 Stress_Level 과 높은 연관성이 나타났다.
+
+
 ## 🛠️ 사용 기술
 - Python (Pandas, Numpy, Scikit-learn, Matplotlib/Seaborn)
 - (추가 라이브러리: XGBoost, LightGBM, etc.)
