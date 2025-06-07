@@ -36,7 +36,7 @@
 
 - **train.csv**  
   - Kaggle에서 수집된 스트레스 관련 데이터셋
-  - 전처리 후 분석 및 모델링에 사용됨
+  - 전처리 후 분석 및 모델링에 사용됨.
 
 - **rf_top_model.pkl**  
   - Random Forest 기반의 예측 모델 학습 결과 저장 파일
@@ -44,7 +44,7 @@
 
 - **stress_analysis.ipynb**  
   - Google Colab에서 실행되는 메인 노트북 파일
-  - 데이터 전처리, EDA, 모델 학습, 평가, 시각화 등이 포함됨
+  - 데이터 전처리, EDA, 모델 학습, 평가, 시각화 등이 포함됨.
 
 
 ### 📂 데이터셋과 피처구성
@@ -71,14 +71,14 @@
   
 ![클래스불균형](https://github.com/user-attachments/assets/81f899cd-7875-41fe-87bf-d7b2fc5bd701)
 
-결과: 1~5 레벨이 거의 동일한 빈도로 분포하고 있어서 클래스 불균형 우려는 적다.
+결과: 1~5 레벨이 거의 동일한 빈도로 분포하고 있어서 클래스 불균형 우려는 적음.
 
 - 선형 상관관계 히트맵
   
 ![상관관계 히트맵](https://github.com/user-attachments/assets/b8760d8b-f76c-4d94-a148-3fc48a98dba7)
 
 
-결과: Sleeping_Habit 과 Exercise_Habit Feature가 Stress_Level에 대해 타 Feature 대비 높은 연관성이 나타났다.
+결과: Sleeping_Habit 과 Exercise_Habit Feature가 Stress_Level에 대해 타 Feature 대비 높은 연관성이 나타남.
 
 
 ## 🛠️ 사용 기술
@@ -89,7 +89,7 @@
 
 ### 학습/검증 데이터 분리
 
-모델의 일반화 성능을 평가하기 위해 데이터를 학습용과 검증용으로 분리함. 클래스 불균형을 고려해 `stratify` 옵션을 사용하였음.
+모델의 일반화 성능을 평가하기 위해 데이터를 학습용과 검증용으로 분리함. 클래스 불균형을 고려해 `stratify` 옵션을 사용함.
 
 ```python
 X_train, X_val, y_train, y_val = train_test_split(
@@ -105,7 +105,7 @@ X_train, X_val, y_train, y_val = train_test_split(
 
 ### 전처리 파이프라인 구성
 
-수치형 변수는 `StandardScaler`로 정규화하고, 범주형 변수는 `OneHotEncoder`로 원-핫 인코딩 진행. `ColumnTransformer`를 사용해 두 가지 전처리를 병렬로 적용하였음음.
+수치형 변수는 `StandardScaler`로 정규화하고, 범주형 변수는 `OneHotEncoder`로 원-핫 인코딩 진행. `ColumnTransformer`를 사용해 두 가지 전처리를 병렬로 적용함함.
 
 ```python
 numeric_cols = [
@@ -130,7 +130,7 @@ preprocessor = ColumnTransformer([
 
 ### 모델 파이프라인 구성 및 학습
 
-전처리와 랜덤 포레스트 분류기를 하나의 파이프라인으로 묶어 학습함. 랜덤 포레스트는 200개의 트리를 사용하며, 병렬 처리를 위해 `n_jobs=-1`로 설정하였음음.
+전처리와 랜덤 포레스트 분류기를 하나의 파이프라인으로 묶어 학습함. 랜덤 포레스트는 200개의 트리를 사용하며, 병렬 처리를 위해 `n_jobs=-1`로 설정함.
 
 ```python
 clf = Pipeline([
