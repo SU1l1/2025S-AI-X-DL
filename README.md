@@ -176,11 +176,9 @@ print(classification_report(y_val, y_pred))
            5       0.20      0.21      0.21       121
 
     accuracy                           0.21       600
-   macro avg       0.21      0.21      0.21       600
-weighted avg       0.21      0.21      0.21       600
-```
-</details>
-<details>
+    macro avg       0.21     0.21      0.21       600
+    weighted avg    0.21     0.21      0.21       600
+ 
 <summary>🔢 Confusion Matrix</summary>
 
      28 18 26 23 27
