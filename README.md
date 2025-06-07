@@ -186,9 +186,7 @@ print(classification_report(y_val, y_pred))
      28 24 21 21 24
      28 25 19 20 28
      23 26 19 27 26
-```
 
-</details>
 **주요 기법:**
 
 - ColumnTransformer를 활용한 체계적 전처리
@@ -198,11 +196,6 @@ print(classification_report(y_val, y_pred))
 - RandomForest 200개 트리 사용
 
 **결과:** 20.83 %의 정확도는 무작위로 답을 찍을 경우 20 %의 확률인 점을 감안하면 심각하게 낮은 수치임. 이에 따라 
-
----
-
----
-
 
 
 ## 📝 주요 진행 내용
