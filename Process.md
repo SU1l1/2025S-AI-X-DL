@@ -472,16 +472,27 @@
 ## 👤 이름: 신동욱
 
 - **실험 내용 요약**  
-  - RandomForest 사용  
-  - 범주형 포함한 전체 변수 조합 자동 탐색  
-  - One-hot 인코딩 진행  
+1. 2 or 3가지 feature를 이용하여 xgboost로 학습하여 정확도 확인
+2. stress level을 1-5를 3가지 또는 2가지로 줄여 학습하여 정확도 확인
 
-- **결과**  
-  - 정확도: 0.2489  
-  - 최적 조합: ['Avg_Working_Hours_Per_Day', 'Sleeping_Habit', 'Work_Life_Balance_Yes', 'Lives_With_Family_Yes']  
+- **결과**
+1.
+| Feature 조합 | Accuracy |
+|--------------|----------|
+| Avg_Working_Hours_Per_Day, Sleeping_Habit | **0.255** |
+| Avg_Working_Hours_Per_Day | 0.231 |
+| Avg_Working_Hours_Per_Day, Social_Person | 0.211 |
+| Avg_Working_Hours_Per_Day, Sleeping_Habit, Social_Person | 0.210 |
+| Avg_Working_Hours_Per_Day, Exercise_Habit, Work_Pressure, Sleeping_Habit, Social_Person, Job_Satisfaction, Manager_Support | 0.185 |
+| Avg_Working_Hours_Per_Day, Sleeping_Habit, Work_Pressure, Exercise_Habit, Manager_Support, Job_Satisfaction, Social_Person | 0.183 |
+
+2.
+| 재분류 기준 | 설명 | Accuracy |
+|--------------|------|----------|
+| 3단계 분류 | 0: Stress ≤ 2<br>1: Stress = 3<br>2: Stress ≥ 4 | 0.420 |
+| 2단계 분류 | 0: Stress ≤ 3<br>1: Stress ≥ 4 | 0.568 |
+
 
 - **코멘트 / 인사이트**  
-  - Lives_With_Family가 중요한 것처럼 보이지만, Yes 단일값으로 오해 소지 있음  
-  - 다음엔 변수 단위 조합 방식으로 리팩터링 예정  
 
 ---
