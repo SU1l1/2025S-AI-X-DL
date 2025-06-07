@@ -87,6 +87,82 @@
 
 ## 📝 탐색적 데이터 분석(EDA) 및 RandomForest 기반 예측
 
+### 학습/검증 데이터 분리
+
+모델의 일반화 성능을 평가하기 위해 데이터를 학습용과 검증용으로 분리합니다. 클래스 불균형을 고려해 `stratify` 옵션을 사용합니다.
+
+```python
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+```
+
+
+---
+
+### 전처리 파이프라인 구성
+
+수치형 변수는 `StandardScaler`로 정규화하고, 범주형 변수는 `OneHotEncoder`로 원-핫 인코딩합니다. `ColumnTransformer`를 사용해 두 가지 전처리를 병렬로 적용합니다.
+
+```python
+numeric_cols = [
+    'Avg_Working_Hours_Per_Day','Work_Pressure','Manager_Support',
+    'Sleeping_Habit','Exercise_Habit','Job_Satisfaction','Social_Person'
+]
+categorical_cols = [
+    'Work_From','Work_Life_Balance','Lives_With_Family','Working_State'
+]
+
+numeric_transformer = StandardScaler()
+categorical_transformer = OneHotEncoder(drop='first', sparse_output=False)
+
+preprocessor = ColumnTransformer([
+    ('num', numeric_transformer, numeric_cols),
+    ('cat', categorical_transformer, categorical_cols)
+])
+```
+
+
+---
+
+### 모델 파이프라인 구성 및 학습
+
+전처리와 랜덤 포레스트 분류기를 하나의 파이프라인으로 묶어 학습합니다. 랜덤 포레스트는 200개의 트리를 사용하며, 병렬 처리를 위해 `n_jobs=-1`로 설정했습니다.
+
+```python
+clf = Pipeline([
+    ('preproc', preprocessor),
+    ('rf', RandomForestClassifier(
+        n_estimators=200,
+        max_depth=None,
+        random_state=42,
+        n_jobs=-1
+    ))
+])
+
+clf.fit(X_train, y_train)
+```
+
+
+---
+
+### 모델 평가
+
+검증 데이터에 대해 예측을 수행하고 정확도와 분류 리포트를 출력합니다.
+
+```python
+y_pred = clf.predict(X_val)
+print(f"Validation Accuracy: {accuracy_score(y_val, y_pred):.4f}\n")
+print("Classification Report:")
+print(classification_report(y_val, y_pred))
+```
+
+
+---
+
 
 
 
