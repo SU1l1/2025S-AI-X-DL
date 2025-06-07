@@ -52,7 +52,7 @@
 - Python (Pandas, Numpy, Scikit-learn, Matplotlib/Seaborn)
 - (추가 라이브러리: XGBoost, LightGBM, etc.)
 
-## 🏃‍♂️ 프로젝트 구조
+## 📝 탐색적 데이터 분석(EDA) 및 RandomForest 기반 예측
 
 
 ## 📝 주요 진행 내용
