@@ -163,6 +163,49 @@ print(classification_report(y_val, y_pred))
 
 ---
 
+### RandomForest 모델을 이용한 예측 결과
+
+**Accuracy:** `0.2083`
+
+<details>
+<summary>📋 Classification Report</summary>
+
+```
+              precision    recall  f1-score   support
+
+           1       0.23      0.23      0.23       122
+           2       0.24      0.25      0.25       119
+           3       0.20      0.18      0.19       118
+           4       0.17      0.17      0.17       120
+           5       0.20      0.21      0.21       121
+
+    accuracy                           0.21       600
+   macro avg       0.21      0.21      0.21       600
+weighted avg       0.21      0.21      0.21       600
+```
+</details>
+<details>
+<summary>🔢 Confusion Matrix</summary>
+
+```
+     28 18 26 23 27
+     17 30 22 25 25
+     28 24 21 21 24
+     28 25 19 20 28
+     23 26 19 27 26
+```
+</details>
+**주요 기법:**
+
+- ColumnTransformer를 활용한 체계적 전처리
+- 수치형 변수: StandardScaler 적용
+- 범주형 변수: OneHotEncoder (drop='first') 적용
+- Pipeline으로 전처리와 모델 통합
+- RandomForest 200개 트리 사용
+
+**결과:** 20.83 %의 정확도는 무작위로 답을 찍을 경우 20 %의 확률인 점을 감안하면 심각하게 낮은 수치임. 이에 따라 
+
+---
 
 
 
