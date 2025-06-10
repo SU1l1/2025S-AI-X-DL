@@ -36,7 +36,7 @@ def train_and_evaluate(X_train, X_val, y_train, y_val):
     y_pred = model.predict(X_val)
 
     acc = accuracy_score(y_val, y_pred)
-    print(f"\n✅ Validation Accuracy: {acc:.4f}\n")
+    print(f"\n Validation Accuracy: {acc:.4f}\n")
     print("📄 Classification Report:")
     print(classification_report(y_val, y_pred, digits=4))
 
