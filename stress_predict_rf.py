@@ -1,3 +1,4 @@
+#일단randomforest로 되어있는데 수정예정
 # stress_predict_rf.py
 
 import pandas as pd
