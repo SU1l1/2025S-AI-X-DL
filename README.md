@@ -105,7 +105,7 @@ X_train, X_val, y_train, y_val = train_test_split(
 
 ### 전처리 파이프라인 구성
 
-수치형 변수는 `StandardScaler`로 정규화하고, 범주형 변수는 `OneHotEncoder`로 원-핫 인코딩 진행. `ColumnTransformer`를 사용해 두 가지 전처리를 병렬로 적용함함.
+수치형 변수는 `StandardScaler`로 정규화하고, 범주형 변수는 `OneHotEncoder`로 원-핫 인코딩 진행. `ColumnTransformer`를 사용해 두 가지 전처리를 병렬로 적용함.
 
 ```python
 numeric_cols = [
@@ -195,7 +195,8 @@ print(classification_report(y_val, y_pred))
 - Pipeline으로 전처리와 모델 통합
 - RandomForest 200개 트리 사용
 
-**결과:** 20.83 %의 정확도는 무작위로 답을 찍을 경우 20 %의 확률인 점을 감안하면 심각하게 낮은 수치임. 이에 따라 
+
+**결과:** 20.83 %의 정확도는 무작위로 답을 찍을 경우 정답일 확률이 20 %인 점을 감안하면, 심각하게 낮은 수치임. 이에 따라 본 팀은, 1. 알고리즘 2. 전처리 3. 피처 엔지니어링 관점에서의 정확도 향상을 시도해보기로 하였음.
 
 
 ## 📝 주요 진행 내용
