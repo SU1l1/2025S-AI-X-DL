@@ -502,6 +502,7 @@ print(classification_report(y_val, y_pred))
 #### 🔥 전처리 극최소화
 
 **Accuracy:** `0.20`
+
 **주요 기법:**
 
 - 절대 최소한의 전처리
@@ -606,6 +607,11 @@ print(classification_report(y_val, y_pred))
 
 - **최고 성능 :** Avg_Working_Hours + Sleeping_Habit 이 두 개의 feature만을 가지고 예측한 결과가 가장 높은 정확도를 보였음 (Accuracy: 0.23).  
 - **분석:** 과도한 업무량 스트레스와 수면 회복력 간 상호작용이 스트레스 지수를 예측하는 데에 도움을 주는 것으로 예상됨.
+
+## 🧾 결론 및 최종 예측
+- 위의 결과에 따라, 알고리즘은 XGBoost, 전처리는 최소화하며 평균 근무 시간과 수면 습관의 두 가지 feature만을 가지고 예측을 시도해보기로 하였음.
+
+- 
 
 ## 🔗 참고 자료
 - [데이터 출처 링크]
