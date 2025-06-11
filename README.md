@@ -429,7 +429,7 @@ print(classification_report(y_val, y_pred))
 | 고급 전처리 | 이상치 처리(IQR) + 빈도 기반 인코딩 + 상호정보량 특성 선택 |
 | 전처리 최소화 | 스케일링 제거 + 간단한 레이블 인코딩 + 하이퍼파라미터 최적화 |
 | 모델 앙상블 | 3개 모델 조합 + 소프트 투팅 + 교차 검증 |
-| 전처리 극최소화화 | 절대 최소 전처리 + 기본 RandomForest |
+| 전처리 극최소화 | 절대 최소 전처리 + 기본 RandomForest |
 
 
 ---
@@ -526,7 +526,86 @@ print(classification_report(y_val, y_pred))
 - **분석:** 간단한 레이블 인코딩, 스케일링 제거, class_weight='balanced' 정도의 단순한 전처리가 가장 효과적임.
 
 ### 3. **Feature Engineering**
-   - 결측치 처리, 이상치 처리, 데이터 타입 변환 등
+
+### 📊 2개씩 피처 조합 목록 및 가설
+
+---
+
+#### 📌 업무환경 관련
+
+- **Avg_Working_Hours_Per_Day + Work_Pressure**  
+  → *“근무 시간이 길고 업무 강도도 높을 때 스트레스는 더 커질 수 있다”*
+
+- **Work_From + Work_Life_Balance**  
+  → *“재택근무와 워라밸이 서로 어떤 영향을 미치는가?”*
+
+- **Work_From + Lives_With_Family**  
+  → *“재택근무 시 가족과 함께 사는가에 따라 스트레스에 미치는 영향이 다를 수 있음”*
+
+---
+
+#### 📌 생활습관 관련
+
+- **Sleeping_Habit + Exercise_Habit**  
+  → *“수면 + 운동 습관이 좋은 경우 스트레스가 낮을 수 있음”*
+
+- **Sleeping_Habit + Work_Pressure**  
+  → *“업무 스트레스가 수면에 영향을 미치고, 반대로도 영향 가능”*
+
+- **Exercise_Habit + Work_Life_Balance**  
+  → *“운동을 한다는 건 워라밸이 잘 유지되고 있다는 신호일 수 있음”*
+
+---
+
+#### 📌 심리/지원 관련
+
+- **Manager_Support + Job_Satisfaction**  
+  → *“관리자 지원이 만족도에 영향을 미치고, 결국 스트레스를 낮추는 방향으로 작용할 수 있음”*
+
+- **Job_Satisfaction + Work_Pressure**  
+  → *“스트레스가 높을수록 직무 만족도가 낮을 수 있다”*
+
+---
+
+#### 📌 성격/주거 관련
+
+- **Social_Person + Lives_With_Family**  
+  → *“사교성이 높고 가족과 함께 사는 사람이 스트레스를 덜 받을 수도 있음”*
+
+- **Social_Person + Work_From**  
+  → *“사교적인 사람이 재택근무일 경우 외로움을 더 많이 느낄 수 있다 → 스트레스 증가 가능성”*
+
+---
+
+#### 📌 지역 기반
+
+- **Working_State + Work_From**  
+  → *“지역별 재택/사무실 출근 비율이 다르므로, 이 조합으로 지역별 스트레스 차이 파악 가능”*
+
+- **Working_State + Stress_Level** *(검증용)*  
+  → *“지도 기반 스트레스 분포 등도 나중에 분석할 수 있음”*
+
+
+다음과 같이 연관된 피처 쌍들을 기반으로 학습을 진행.
+
+#### ✅ 피처 조합 기반 실험 결과 요약
+
+| 피처 조합                                                      | Accuracy | Macro F1 | 특징 요약                                |
+|---------------------------------------------------------------|----------|----------|------------------------------------------|
+| Avg_Working_Hours + Work_Pressure                              | 0.2017   | 0.2018   | 업무량과 압박의 상관관계                 |
+| Work_From + Work_Life_Balance                                  | 0.2050   | 0.1729   | 특정 클래스(2) 예측 실패                 |
+| Sleeping_Habit + Exercise_Habit                                | 0.2083   | 0.2067   | 전반적으로 균형 잡힌 성능                 |
+| Manager_Support + Job_Satisfaction                             | 0.1900   | 0.1852   | 정서적 지원과 만족도의 상호작용          |
+| Job_Satisfaction + Work_Pressure                               | 0.1950   | 0.1843   | 스트레스와 만족도의 역관계 일부 포착      |
+| Social_Person + Lives_With_Family                              | 0.1700   | 0.1627   | 사회성 및 주거환경만으로는 한계           |
+| Avg_Working_Hours + Job_Satisfaction                           | 0.2067   | 0.2062   | 업무시간과 만족도의 조합                 |
+| Avg_Working_Hours + Work_Life_Balance                          | 0.2150   | 0.2133   | 워라밸과 업무량 조합, 안정적 성능         |
+| Avg_Working_Hours + Work_From                                  | 0.2033   | 0.1997   | 재택/출근 여부에 따른 업무량 영향 분석    |
+| Avg_Working_Hours + Work_Life_Balance + Job_Satisfaction       | 0.2117   | 0.2103   | 업무·정서 복합 조합                       |
+| **Avg_Working_Hours + Sleeping_Habit**                        | **0.2333** | **0.2321** | **🔥 현재 최고 성능 조합**   |
+
+- **최고 성능 :** Avg_Working_Hours + Sleeping_Habit 이 두 개의 feature만을 가지고 예측한 결과가 가장 높은 정확도를 보였음 (Accuracy: 0.23).  
+- **분석:** 과도한 업무량 스트레스와 수면 회복력 간 상호작용이 스트레스 지수를 예측하는 데에 도움을 주는 것으로 예상됨.
 
 ## 🔗 참고 자료
 - [데이터 출처 링크]
