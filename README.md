@@ -608,10 +608,10 @@ print(classification_report(y_val, y_pred))
 - **최고 성능 :** Avg_Working_Hours + Sleeping_Habit 이 두 개의 feature만을 가지고 예측한 결과가 가장 높은 정확도를 보였음 (Accuracy: 0.23).  
 - **분석:** 과도한 업무량 스트레스와 수면 회복력 간 상호작용이 스트레스 지수를 예측하는 데에 도움을 주는 것으로 예상됨.
 
-## 🧾 결론 및 최종 예측
-- 위의 결과에 따라, 알고리즘은 XGBoost, 전처리는 최소화하며 평균 근무 시간과 수면 습관의 두 가지 feature만을 가지고 예측을 시도해보기로 하였음.
+## 🧾 최종 예측
+- 위의 결과에 따라, 알고리즘은 XGBoost, 전처리를 적용하지 않고 XGBoost의 기본 수치형 변수를 사용하며, 평균 근무 시간과 수면 습관의 두 가지 feature만을 가지고 예측을 시도해보기로 하였음.
 
-## XGBoost + 2 Feature 사용하여 예측
+#### → XGBoost + 2 Feature 만을 사용하여 예측
 **Accuracy:** `0.255`  
 
 <summary>📋 Classification Report</summary>
@@ -630,11 +630,10 @@ print(classification_report(y_val, y_pred))
 
 - 그 결과, 예측 정확도를 25.5% 까지 증가시킬 수 있었음.
 
+## 🔍 결론 및 시사점
+- train.csv에 포함된 요인들 만으로는 스트레스 수치를 정량적으로 예측하기 어려우며, 모델의 예측력을 높이기 위해서는 정성적 설문 지표와 같은 추가적인 요인이 필요할 것으로 보임.
+- 비록 모델의 예측 정확도가 25% 였음에도 불구하고, 수면 습관과 평균 근무 시간은 직장인의 스트레스에 유의미한 영향을 주는 것으로 판단됨.
+
 ## 🔗 참고 자료
 - [데이터 출처 링크]
 - [참고 논문/자료]
-
-## 🚩 실행 방법 
-```bash
-# 환경설정
-pip install -r requirements.txt
