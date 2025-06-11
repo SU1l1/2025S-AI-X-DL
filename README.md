@@ -202,7 +202,7 @@ print(classification_report(y_val, y_pred))
 
 ## 🚩 정확도 향상
 
-### 1. **머신러닝 알고리즘 변경**
+## 1. **머신러닝 알고리즘 변경**
    
 #### 🧪 실험한 모델 및 특징 요약
 
@@ -418,7 +418,7 @@ print(classification_report(y_val, y_pred))
 - **최고 성능 모델:** XGBoost (Accuracy: 0.2367, Macro F1: 0.23)  
 - **분석:** 예측 난이도가 높아 전반적으로 정확도의 향상 폭이 미미하나, XGBoost 알고리즘의 정확도가 가장 높게 나왔음.
 
-### 2. **다양한 전처리 적용**
+## 2. **다양한 전처리 적용**
 
 ### 🧪 실험한 전처리 기법 및 특징 요약
 
@@ -526,7 +526,7 @@ print(classification_report(y_val, y_pred))
 - **최고 성능 :** 기본 랜덤포레스트 (Accuracy: 0.21)  
 - **분석:** 간단한 레이블 인코딩, 스케일링 제거, class_weight='balanced' 정도의 단순한 전처리가 가장 효과적임.
 
-### 3. **Feature Engineering**
+## 3. **Feature Engineering**
 
 ### 📊 2개씩 피처 조합 목록 및 가설
 
