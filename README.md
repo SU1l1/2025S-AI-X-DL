@@ -203,7 +203,220 @@ print(classification_report(y_val, y_pred))
 ## 🚩 정확도 향상
 
 ### 1. **머신러닝 알고리즘 변경**
-   - 결측치 처리, 이상치 처리, 데이터 타입 변환 등
+   
+#### 🧪 실험한 모델 및 특징 요약
+
+| 모델              | 주요 특징 요약                                           |
+|-------------------|-----------------------------------------------------------|
+| LogisticRegression | 선형 모델, 빠르고 간단. `class_weight='balanced'` 적용 |
+| RandomForest       | 비선형 모델, 변수 중요도 파악 용이                      |
+| CatBoost           | 빠르고 튜닝 내성 강함, 범주형 자동 처리 가능            |
+| XGBoost            | 정밀한 예측, 부스팅 계열 대표 모델                      |
+| MLPClassifier      | 신경망 기반, 비선형 학습 가능                           |
+| SVM                | 결정 경계 기반, 소규모에 적합                           |
+| LDA                | 선형 분리 기반, 해석력 우수                              |
+
+---
+
+### 모델별 결과
+
+#### 🔹 Logistic Regression  
+**Accuracy:** `0.18`  
+<summary>📋 Classification Report</summary>
+
+              precision    recall  f1-score   support
+
+           0       0.17      0.11      0.13       122
+           1       0.18      0.26      0.22       119
+           2       0.22      0.02      0.03       118
+           3       0.17      0.23      0.20       120
+           4       0.19      0.29      0.23       121
+
+    accuracy                           0.18       600
+    macro avg      0.19      0.18      0.16       600
+    weighted avg   0.19      0.18      0.16       600
+
+
+<summary>🔢 Confusion Matrix</summary>
+
+      6 35 11 37 33
+      3 33 11 43 29
+     11 30  6 27 44
+      7 35 12 30 36
+      9 44  2 33 33
+
+---
+
+#### 🌲 Random Forest  
+**Accuracy:** `0.195`  
+<summary>📋 Classification Report</summary>
+
+               precision    recall  f1-score   support
+           0       0.25      0.29      0.27       122
+           1       0.12      0.12      0.12       119
+           2       0.21      0.21      0.21       118
+           3       0.17      0.16      0.17       120
+           4       0.21      0.20      0.20       121
+
+    accuracy                           0.20       600
+    macro avg      0.19      0.19      0.19       600
+    weighted avg   0.19      0.20      0.19       600
+
+<summary>🔢 Confusion Matrix</summary>
+
+     35 29 19 21 18
+     32 14 25 20 28
+     26 23 25 21 23
+     21 26 31 19 23
+     25 26 17 29 24
+
+---
+
+#### 🐱 CatBoost  
+**Accuracy:** `0.1983333`  
+<summary>📋 Classification Report</summary>
+
+               precision    recall  f1-score   support
+
+           0       0.25      0.27      0.26       122
+           1       0.17      0.16      0.16       119
+           2       0.22      0.19      0.21       118
+           3       0.16      0.15      0.16       120
+           4       0.18      0.21      0.20       121
+
+    accuracy                           0.20       600
+    macro avg      0.20      0.20      0.20       600
+    weighted avg   0.20      0.20      0.20       600
+
+<summary>🔢 Confusion Matrix</summary>
+
+     33 19 21 21 28
+     26 19 22 23 29
+     29 25 23 20 21
+     21 24 20 18 37
+     21 26 20 28 26
+
+---
+
+#### 🚀 XGBoost  
+**Accuracy:** `0.2366666`  
+<summary>📋 Classification Report</summary>
+
+               precision    recall  f1-score   support
+
+           0       0.32      0.35      0.33       122
+           1       0.19      0.19      0.19       119
+           2       0.25      0.25      0.25       118
+           3       0.18      0.16      0.17       120
+           4       0.23      0.23      0.23       121
+
+    accuracy                           0.24       600
+    macro avg      0.23      0.24      0.23       600
+    weighted avg   0.23      0.24      0.24       600
+
+
+<summary>🔢 Confusion Matrix</summary>
+
+     43 18 17 19 25
+     29 23 20 22 25
+     20 26 29 22 21
+     26 27 25 19 23
+     17 29 23 24 28
+
+---
+
+#### 🧠 MLPClassifier  
+**Accuracy:** `0.17`  
+<summary>📋 Classification Report</summary>
+
+               precision    recall  f1-score   support
+
+           0       0.20      0.18      0.19       122
+           1       0.17      0.15      0.16       119
+           2       0.24      0.24      0.24       118
+           3       0.12      0.12      0.12       120
+           4       0.13      0.16      0.15       121
+
+    accuracy                           0.17       600
+    macro avg      0.17      0.17      0.17       600
+    weighted avg   0.17      0.17      0.17       600
+
+<summary>🔢 Confusion Matrix</summary>
+
+     22 20 23 30 27
+     18 18 19 19 45
+     25 20 28 28 17
+     26 22 24 15 33
+     21 23 23 35 19
+
+---
+
+#### 🌀 SVM  
+**Accuracy:** `0.1683333`  
+<summary>📋 Classification Report</summary>
+
+               precision    recall  f1-score   support
+
+           0       0.19      0.17      0.18       122
+           1       0.21      0.21      0.21       119
+           2       0.18      0.13      0.15       118
+           3       0.13      0.14      0.14       120
+           4       0.15      0.19      0.17       121
+
+    accuracy                           0.17       600
+    macro avg      0.17      0.17      0.17       600
+    weighted avg   0.17      0.17      0.17       600
+
+<summary>🔢 Confusion Matrix</summary>
+
+     22 20 23 30 27
+     18 18 19 19 45
+     25 20 28 28 17
+     26 22 24 15 33
+     21 23 23 35 19
+
+---
+
+#### 🔬 LDA  
+**Accuracy:** `0.18166666`  
+<summary>📋 Classification Report</summary>
+
+               precision    recall  f1-score   support
+
+           0       0.17      0.11      0.13       122
+           1       0.18      0.26      0.22       119
+           2       0.22      0.02      0.03       118
+           3       0.17      0.23      0.20       120
+           4       0.19      0.29      0.23       121
+
+    accuracy                           0.18       600
+    macro avg      0.19      0.18      0.16       600
+    weighted avg   0.19      0.18      0.16       600
+
+<summary>🔢 Confusion Matrix</summary>
+
+     13 34  4 38 33
+     16 31  1 37 34
+     18 29  2 25 44
+     21 33  0 28 38
+     10 42  2 32 35
+
+---
+
+#### ✅ 모델별 실험 결과
+
+| 모델               | Accuracy | Macro F1 |
+|--------------------|----------|----------|
+| LogisticRegression | 0.18     | 0.16     |    
+| RandomForest       | 0.20     | 0.19     |       
+| CatBoost           | 0.20     | 0.20     |        
+| XGBoost            | **0.24** | **0.23** |             
+| MLPClassifier      | 0.17     | 0.17     |         
+| SVM                | 0.17     | 0.17     |    
+| LDA                | 0.18     | 0.16     |      
+
+- **최고 성능 모델:** XGBoost (Accuracy: 0.2367, Macro F1: 0.23)  
+- **분석:** 예측 난이도가 높아 전반적으로 정확도의 향상 폭이 미미하나, XGBoost 알고리즘의 정확도가 가장 높게 나왔음.
 
 ### 2. **다양한 전처리 적용**
    - 결측치 처리, 이상치 처리, 데이터 타입 변환 등
