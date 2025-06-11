@@ -1,7 +1,7 @@
 # 직장인 라이프스타일 기반 스트레스 연관관계 예측
 
 
-## 👨‍💻 팀원 소개
+## I. 팀원 소개
 
 | 학부                         | 이름   | 학번        | 이메일                      |
 |------------------------------|--------|-------------|-----------------------------|
@@ -11,10 +11,10 @@
 | 바이오신약융합학부 분자의약전공| 신동욱 | 2022016680  | hy2022016680@hanyang.ac.kr  |
 
 
-## 📌 프로젝트 개요
+## II. 프로젝트 개요
 - 직장인 스트레스 데이터셋을 바탕으로 어떤 요인이 가장 스트레스와 연관이 높은지 분석하고 이를 바탕으로 스트레스 지수를 예측한다.
 
-## 🏷️ 목적
+## III. 목적
 ### 직장인 라이프스타일과 스트레스 간의 연관관계 분석
 - 본 프로젝트에서는 직장인의 근무 시간, 워라밸 지표(재택 근무 여부, 휴식 시간 확보 정도 등), 업무 강도(프로젝트 수, 마감 빈도 등) 및 생활 습관(운동 빈도, 수면 시간, 식사 패턴 등)과 스트레스 지수 간의 상관관계를 분석.
 
@@ -27,12 +27,12 @@
 
 - 이를 통해 “이 지표들을 기반으로 개인별 스트레스 강도를 어느 정도 정확도로 예측할 수 있는가?”를 확인하고, 예측 결과가 유의미할 경우 실시간 스트레스 모니터링 시스템 개발의 가능성을 모색함.
 
-## 📁 프로젝트 디렉토리 구조
+## IV. 프로젝트 디렉토리 구조
 
 ![aixproject](https://github.com/user-attachments/assets/e9660967-eccd-4a41-ac86-eebd07b82a2b)
 
 
-### 📄 파일 설명
+### 파일 설명
 
 - **train.csv**  
   - Kaggle에서 수집된 스트레스 관련 데이터셋
@@ -47,7 +47,7 @@
   - 데이터 전처리, EDA, 모델 학습, 평가, 시각화 등이 포함됨.
 
 
-### 📂 데이터셋과 피처구성
+### 데이터셋과 피처구성
 
 - **출처:** [Kaggle: employees-stress-level-dataset](https://www.kaggle.com/datasets/chanchalagorale/employees-stress-level-dataset/data)
 
@@ -81,11 +81,11 @@
 결과: Sleeping_Habit 과 Exercise_Habit Feature가 Stress_Level에 대해 타 Feature 대비 높은 연관성이 나타남.
 
 
-## 🛠️ 사용 기술
+## V. 사용 라이브러리
 - Python (Pandas, Numpy, Scikit-learn, Matplotlib/Seaborn)
 - (추가 라이브러리: XGBoost, LightGBM, etc.)
 
-## 📝 RandomForest 알고리즘을 사용하여 스트레스 지수 예측
+## VI. RandomForest 알고리즘을 사용한 스트레스 지수 예측
 
 ### 학습/검증 데이터 분리
 
@@ -189,22 +189,22 @@ print(classification_report(y_val, y_pred))
 
 **주요 기법:**
 
-- ColumnTransformer를 활용한 체계적 전처리
+- ColumnTransformer를 활용한 전처리
 - 수치형 변수: StandardScaler 적용
 - 범주형 변수: OneHotEncoder (drop='first') 적용
 - Pipeline으로 전처리와 모델 통합
 - RandomForest 200개 트리 사용
 
 
-## 결과: 
-### 20.83 %의 정확도는 무작위로 답을 찍을 경우 정답일 확률이 20 %인 점을 감안하면, 심각하게 낮은 수치임.
-### 이에 따라 본 팀은, 알고리즘과 전처리, Feature Engineering 관점에서 코드를 수정하여 정확도 향상을 시도해보기로 함.
+### 결과: 
+#### 20.83 %의 정확도는 무작위로 답을 찍을 경우 정답일 확률이 20 %인 점을 감안하면, 심각하게 낮은 수치임.
+#### 이에 따라 본 팀은, 알고리즘과 전처리, Feature Engineering 관점에서 코드를 수정하여 정확도 향상을 시도해보기로 함.
 
-## 🚩 정확도 향상
+## VII. 정확도 향상
 
-## 1. **머신러닝 알고리즘 변경**
+## 1) **머신러닝 알고리즘 변경**
    
-#### 🧪 실험한 모델 및 특징 요약
+#### 실험한 모델 및 특징 요약
 
 | 모델              | 주요 특징 요약                                           |
 |-------------------|-----------------------------------------------------------|
@@ -220,7 +220,7 @@ print(classification_report(y_val, y_pred))
 
 ### 모델별 결과
 
-#### 🔹 Logistic Regression  
+#### Logistic Regression  
 **Accuracy:** `0.18`  
 <summary>📋 Classification Report</summary>
 
@@ -247,7 +247,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🌲 Random Forest  
+#### Random Forest  
 **Accuracy:** `0.195`  
 <summary>📋 Classification Report</summary>
 
@@ -272,7 +272,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🐱 CatBoost  
+#### CatBoost  
 **Accuracy:** `0.1983333`  
 <summary>📋 Classification Report</summary>
 
@@ -298,7 +298,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🚀 XGBoost  
+#### XGBoost  
 **Accuracy:** `0.2366666`  
 <summary>📋 Classification Report</summary>
 
@@ -325,7 +325,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🧠 MLPClassifier  
+#### MLPClassifier  
 **Accuracy:** `0.17`  
 <summary>📋 Classification Report</summary>
 
@@ -351,7 +351,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🌀 SVM  
+#### SVM  
 **Accuracy:** `0.1683333`  
 <summary>📋 Classification Report</summary>
 
@@ -377,7 +377,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🔬 LDA  
+#### LDA  
 **Accuracy:** `0.18166666`  
 <summary>📋 Classification Report</summary>
 
@@ -403,7 +403,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### ✅ 모델별 실험 결과
+#### 모델별 실험 요약
 
 | 모델               | Accuracy | Macro F1 |
 |--------------------|----------|----------|
@@ -418,9 +418,9 @@ print(classification_report(y_val, y_pred))
 - **최고 성능 모델:** XGBoost (Accuracy: 0.2367, Macro F1: 0.23)  
 - **분석:** 예측 난이도가 높아 전반적으로 정확도의 향상 폭이 미미하나, XGBoost 알고리즘의 정확도가 가장 높게 나왔음.
 
-## 2. **다양한 전처리 적용**
+## 2) **다양한 전처리 적용**
 
-### 🧪 실험한 전처리 기법 및 특징 요약
+### 적용된 전처리 기법 및 특징 요약
 
 | 접근 방법 | 주요 특징 요약 |
 | :-- | :-- |
@@ -434,9 +434,9 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-### 📊 전처리 방법별 결과
+### 전처리 방법별 결과
 
-#### 🔹 기본 랜덤포레스트
+#### 기본 랜덤포레스트
 
 **Accuracy:** `0.21`
 
@@ -449,7 +449,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🔄 클래스 불균형
+#### 클래스 불균형
 
 **Accuracy:** `0.19`
 
@@ -460,7 +460,7 @@ print(classification_report(y_val, y_pred))
 - 클래스 가중치 수동 조정
 ---
 
-#### 🔬 고급 전처리 기법
+#### 고급 전처리 기법
 
 **Accuracy:** `0.21`
 
@@ -473,7 +473,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🎯 전처리 최소화
+#### 전처리 최소화
 
 **Accuracy:** `0.21`
 
@@ -486,7 +486,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🎭 모델 앙상블
+#### 모델 앙상블
 
 **Accuracy:** `0.18`
 
@@ -499,7 +499,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 🔥 전처리 극최소화
+#### 전처리 극최소화
 
 **Accuracy:** `0.20`
 
@@ -512,7 +512,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### ✅ 전처리 기법별 실험 요약
+#### 전처리 기법별 실험 요약
 
 | 접근 방법            | Accuracy | 주요 특징 요약                                   |
 |---------------------|----------|--------------------------------------------------|
@@ -526,13 +526,13 @@ print(classification_report(y_val, y_pred))
 - **최고 성능 :** 기본 랜덤포레스트 (Accuracy: 0.21)  
 - **분석:** 간단한 레이블 인코딩, 스케일링 제거, class_weight='balanced' 정도의 단순한 전처리가 가장 효과적임.
 
-## 3. **Feature Engineering**
+## 3) **Feature Engineering**
 
-### 📊 2개씩 피처 조합 목록 및 가설
+### 피처 조합 목록 및 가설
 
 ---
 
-#### 📌 업무환경 관련
+#### 업무환경 관련
 
 - **Avg_Working_Hours_Per_Day + Work_Pressure**  
   → *“근무 시간이 길고 업무 강도도 높을 때 스트레스는 더 커질 수 있다”*
@@ -545,7 +545,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 📌 생활습관 관련
+#### 생활습관 관련
 
 - **Sleeping_Habit + Exercise_Habit**  
   → *“수면 + 운동 습관이 좋은 경우 스트레스가 낮을 수 있음”*
@@ -558,7 +558,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 📌 심리/지원 관련
+#### 심리/지원 관련
 
 - **Manager_Support + Job_Satisfaction**  
   → *“관리자 지원이 만족도에 영향을 미치고, 결국 스트레스를 낮추는 방향으로 작용할 수 있음”*
@@ -568,7 +568,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 📌 성격/주거 관련
+#### 성격/주거 관련
 
 - **Social_Person + Lives_With_Family**  
   → *“사교성이 높고 가족과 함께 사는 사람이 스트레스를 덜 받을 수도 있음”*
@@ -578,7 +578,7 @@ print(classification_report(y_val, y_pred))
 
 ---
 
-#### 📌 지역 기반
+#### 지역 기반
 
 - **Working_State + Work_From**  
   → *“지역별 재택/사무실 출근 비율이 다르므로, 이 조합으로 지역별 스트레스 차이 파악 가능”*
@@ -589,7 +589,7 @@ print(classification_report(y_val, y_pred))
 
 다음과 같이 연관된 피처 쌍들을 기반으로 학습을 진행.
 
-#### ✅ 피처 조합 기반 실험 결과 요약
+#### 피처 조합 기반 실험 결과 요약
 
 | 피처 조합                                                      | Accuracy | Macro F1 | 특징 요약                                |
 |---------------------------------------------------------------|----------|----------|------------------------------------------|
@@ -608,10 +608,10 @@ print(classification_report(y_val, y_pred))
 - **최고 성능 :** Avg_Working_Hours + Sleeping_Habit 이 두 개의 feature만을 가지고 예측한 결과가 가장 높은 정확도를 보였음 (Accuracy: 0.23).  
 - **분석:** 과도한 업무량 스트레스와 수면 회복력 간 상호작용이 스트레스 지수를 예측하는 데에 도움을 주는 것으로 예상됨.
 
-## 🧾 최종 예측
+## 최종 예측
 - 위의 결과에 따라, 알고리즘은 XGBoost, 전처리를 적용하지 않고 XGBoost의 기본 수치형 변수를 사용하며, 평균 근무 시간과 수면 습관의 두 가지 feature만을 가지고 예측을 시도해보기로 하였음.
+→ XGBoost + 2 Feature 만을 사용하여 예측
 
-#### → XGBoost + 2 Feature 만을 사용하여 예측
 **Accuracy:** `0.255`  
 
 <summary>📋 Classification Report</summary>
@@ -630,10 +630,16 @@ print(classification_report(y_val, y_pred))
 
 - 그 결과, 예측 정확도를 25.5% 까지 증가시킬 수 있었음.
 
-## 🔍 결론 및 시사점
+## VIII. 결론 및 시사점
 - train.csv에 포함된 요인들 만으로는 스트레스 수치를 정량적으로 예측하기 어려우며, 모델의 예측력을 높이기 위해서는 정성적 설문 지표와 같은 추가적인 요인이 필요할 것으로 보임.
 - 비록 모델의 예측 정확도가 25% 였음에도 불구하고, 수면 습관과 평균 근무 시간은 직장인의 스트레스에 유의미한 영향을 주는 것으로 판단됨.
 
-## 🔗 참고 자료
+## IX. VIDEO
+-
+
+## X. 팀원 기여도
+-
+
+## XI. 참고 자료
 - [데이터 출처 링크]
 - [참고 논문/자료]
