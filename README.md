@@ -649,7 +649,7 @@ https://github.com/user-attachments/assets/8e688ef0-750c-40e8-adc4-39845c077924
 - 비록 모델의 예측 정확도가 25.5% 였음에도 불구하고, 수면 습관과 평균 근무 시간은 직장인의 스트레스에 유의미한 영향을 주는 것으로 판단됨.
 
 ## IX. VIDEO
-- [AI:X 최종 과제 G09 (2025-1)](https://youtu.be/KQRlhW88DUA)
+- [https://youtu.be/KQRlhW88DUA]
 
 
 ## X. 팀원 기여도
@@ -665,4 +665,4 @@ https://github.com/user-attachments/assets/8e688ef0-750c-40e8-adc4-39845c077924
 
 ## XI. 참고 자료
 
-- **[데이터 출처]:** [Kaggle: employees-stress-level-dataset](https://www.kaggle.com/datasets/chanchalagorale/employees-stress-level-dataset/data)
+- **[https://www.kaggle.com/datasets/chanchalagorale/employees-stress-level-dataset/data)]**
