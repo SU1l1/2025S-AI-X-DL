@@ -29,7 +29,7 @@
 
 ## IV. 프로젝트 디렉토리 구조
 
-![aixproject](https://github.com/user-attachments/assets/e9660967-eccd-4a41-ac86-eebd07b82a2b)
+![프로젝트구조](https://github.com/user-attachments/assets/32bbfef0-977c-4f77-9e2e-e722351eff16)
 
 
 ### 파일 설명
@@ -38,13 +38,9 @@
   - Kaggle에서 수집된 스트레스 관련 데이터셋
   - 전처리 후 분석 및 모델링에 사용됨.
 
-- **rf_top_model.pkl**  
-  - Random Forest 기반의 예측 모델 학습 결과 저장 파일
-  - 중요 피처 3개를 기반으로 학습된 모델
-
-- **stress_analysis.ipynb**  
-  - Google Colab에서 실행되는 메인 노트북 파일
-  - 데이터 전처리, EDA, 모델 학습, 평가, 시각화 등이 포함됨.
+- **stress_predict_rf.py**  
+  - XGBOOST 기반의 예측 모델 학습 결과 저장 파일
+  - 중요 피처 2개를 기반으로 학습된 모델
 
 
 ### 데이터셋과 피처구성
