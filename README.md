@@ -615,23 +615,14 @@ print(classification_report(y_val, y_pred))
 - 위의 결과에 따라, 알고리즘은 XGBoost, 전처리를 적용하지 않고 XGBoost의 기본 수치형 변수를 사용하며, 평균 근무 시간과 수면 습관의 두 가지 feature만을 가지고 예측을 시도해보기로 하였음.
 → XGBoost + 2 Feature 만을 사용하여 예측.
 
-**Accuracy:** `0.255`  
 
-<summary>📋 Classification Report</summary>
+https://github.com/user-attachments/assets/8e688ef0-750c-40e8-adc4-39845c077924
 
-              precision    recall  f1-score   support
 
-           1       0.24      0.23      0.24       124
-           2       0.21      0.26      0.23       101
-           3       0.29      0.26      0.28       129
-           4       0.28      0.30      0.29       123
-           5       0.24      0.22      0.23       123
-
-    accuracy                           0.26       600
-    macro avg      0.25      0.26      0.25       600
-    weighted avg   0.26      0.26      0.26       600
 
 - 그 결과, 예측 정확도를 25.5% 까지 증가시킬 수 있었음.
+
+
 
 ## VIII. 결론 및 시사점
 
@@ -659,6 +650,10 @@ print(classification_report(y_val, y_pred))
 
 ## IX. VIDEO
 -
+
+
+
+
 
 ## X. 팀원 기여도
 -
