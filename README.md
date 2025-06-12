@@ -82,8 +82,15 @@
 
 
 ## V. 사용 라이브러리
-- Python (Pandas, Numpy, Scikit-learn, Matplotlib/Seaborn)
-- (추가 라이브러리: XGBoost, LightGBM, etc.)
+
+| **라이브러리** | **기능** |
+| :-- | :-- |
+| **pandas** | 데이터 조작 및 분석 |
+| **sklearn.model_selection** | 데이터 분할 |
+| **sklearn.metrics** | 모델 성능 평가 |
+| **Matplotlib** | 데이터 시각화 |
+| **RandomForest** | 다수의 결정 트리를 통한 머신러닝|
+| **XGBoost** | 그래디언트 부스팅 머신러닝 |
 
 ## VI. RandomForest 알고리즘을 사용한 스트레스 지수 예측
 
