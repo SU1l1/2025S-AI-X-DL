@@ -506,7 +506,7 @@ print(classification_report(y_val, y_pred))
 
 **Accuracy:** `0.20`
 
-**주요 기법:**
+**설명명:**
 
 - 절대 최소한의 전처리
 - 기본 RandomForestClassifier 설정
