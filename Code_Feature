@@ -1,0 +1,336 @@
+**-------------------------------------------------------------------------------- [Job Satisfaction, Work Pressure] --------------------------------------------------------------------------------**
+
+# 1) 데이터 다시 로드
+import pandas as pd
+
+data_path = '/content/drive/MyDrive/ai:x/train.csv'  # ← 경로 확인
+df = pd.read_csv(data_path)
+
+# 2) 선택 피처 조합: Job_Satisfaction + Work_Pressure
+selected_feats = ['Job_Satisfaction', 'Work_Pressure']
+target_col = 'Stress_Level'
+
+# 3) 필요한 컬럼만 추출
+df_sel = df[selected_feats + [target_col]].copy()
+df_sel['Stress_Level'] = df_sel['Stress_Level'] - 1  # label: 0~4
+
+# 4) 학습 준비
+X = df_sel[selected_feats].values
+y = df_sel[target_col].values
+
+# 5) train/val 분할
+from sklearn.model_selection import train_test_split
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 6) 스케일링
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_val_scaled = scaler.transform(X_val)
+
+# 7) 모델 학습
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+rf.fit(X_train_scaled, y_train)
+
+# 8) 예측 및 결과 출력
+y_pred = rf.predict(X_val_scaled)
+val_acc = accuracy_score(y_val, y_pred)
+
+print(f"\n✅ Validation Accuracy: {val_acc:.4f}\n")
+print("📄 Classification Report:")
+print(classification_report(y_val, y_pred, digits=4))
+
+
+
+**-------------------------------------------------------------------------------- [Social Person, Lives with family] --------------------------------------------------------------------------------**
+
+# 1) 선택 피처
+selected_feats = ['Social_Person', 'Lives_With_Family']
+target_col = 'Stress_Level'
+
+# 2) 범주형 처리 (Lives_With_Family: Yes/No → One-Hot)
+from sklearn.preprocessing import OneHotEncoder
+
+df_sel = df[selected_feats + [target_col]].copy()
+df_sel['Stress_Level'] = df_sel['Stress_Level'] - 1  # 0~4
+
+ohe = OneHotEncoder(drop='first', sparse_output=False)
+X_cat = ohe.fit_transform(df_sel[['Lives_With_Family']])
+cat_cols = ohe.get_feature_names_out(['Lives_With_Family'])
+
+# 3) 수치형 + 인코딩 결합
+import numpy as np
+X_num = df_sel[['Social_Person']].values
+X = np.hstack([X_num, X_cat])
+y = df_sel[target_col].values
+
+# 4) 학습/검증 분할
+from sklearn.model_selection import train_test_split
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 5) 스케일링
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_val_scaled = scaler.transform(X_val)
+
+# 6) 모델 학습 및 평가
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+rf.fit(X_train_scaled, y_train)
+
+y_pred = rf.predict(X_val_scaled)
+val_acc = accuracy_score(y_val, y_pred)
+
+print(f"\n✅ Validation Accuracy: {val_acc:.4f}\n")
+print("📄 Classification Report:")
+print(classification_report(y_val, y_pred, digits=4))
+
+
+  
+**-------------------------------------------------------------------------------- [Average working hours per day, job satisfaction] --------------------------------------------------------------------------------**
+
+# 1) 선택 피처
+selected_feats = ['Avg_Working_Hours_Per_Day', 'Job_Satisfaction']
+target_col = 'Stress_Level'
+
+# 2) DataFrame 구성
+df_sel = df[selected_feats + [target_col]].copy()
+df_sel['Stress_Level'] = df_sel['Stress_Level'] - 1  # 레이블 0~4
+
+# 3) X, y 분리
+X = df_sel[selected_feats].values
+y = df_sel[target_col].values
+
+# 4) 학습/검증 분리
+from sklearn.model_selection import train_test_split
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 5) 스케일링
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_val_scaled = scaler.transform(X_val)
+
+# 6) 모델 학습
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+rf.fit(X_train_scaled, y_train)
+
+# 7) 평가
+y_pred = rf.predict(X_val_scaled)
+val_acc = accuracy_score(y_val, y_pred)
+
+print(f"\n✅ Validation Accuracy: {val_acc:.4f}\n")
+print("📄 Classification Report:")
+print(classification_report(y_val, y_pred, digits=4))
+
+
+
+**-------------------------------------------------------------------------------- [Average working hours per day, Work life balace] --------------------------------------------------------------------------------**
+
+# 1) 선택 피처
+selected_feats = ['Avg_Working_Hours_Per_Day', 'Work_Life_Balance']
+target_col = 'Stress_Level'
+
+# 2) 데이터셋 준비
+df_sel = df[selected_feats + [target_col]].copy()
+df_sel['Stress_Level'] = df_sel['Stress_Level'] - 1  # 레이블: 0~4
+
+# 3) One-Hot 인코딩 (Work_Life_Balance: Yes/No → 1/0)
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder(drop='first', sparse_output=False)  # drop='first' → Yes만 남음
+X_cat = ohe.fit_transform(df_sel[['Work_Life_Balance']])
+cat_cols = ohe.get_feature_names_out(['Work_Life_Balance'])
+
+# 4) 연속형 + 인코딩 결합
+import numpy as np
+X_num = df_sel[['Avg_Working_Hours_Per_Day']].values
+X = np.hstack([X_num, X_cat])
+y = df_sel['Stress_Level'].values
+
+# 5) train/val 분할
+from sklearn.model_selection import train_test_split
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 6) 스케일링
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_val_scaled = scaler.transform(X_val)
+
+# 7) 모델 학습
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+rf.fit(X_train_scaled, y_train)
+
+# 8) 예측 및 평가
+y_pred = rf.predict(X_val_scaled)
+val_acc = accuracy_score(y_val, y_pred)
+
+print(f"\n✅ Validation Accuracy: {val_acc:.4f}\n")
+print("📄 Classification Report:")
+print(classification_report(y_val, y_pred, digits=4))
+
+
+
+**-------------------------------------------------------------------------------- [Average working hours per day, Work from] --------------------------------------------------------------------------------**
+
+# 1) 선택 피처
+selected_feats = ['Avg_Working_Hours_Per_Day', 'Work_From']
+target_col = 'Stress_Level'
+
+# 2) 데이터 구성
+df_sel = df[selected_feats + [target_col]].copy()
+df_sel['Stress_Level'] = df_sel['Stress_Level'] - 1  # 레이블: 0~4
+
+# 3) Work_From One-Hot 인코딩
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder(drop='first', sparse_output=False)
+X_cat = ohe.fit_transform(df_sel[['Work_From']])
+cat_cols = ohe.get_feature_names_out(['Work_From'])  # ex: ['Work_From_Hybrid', 'Work_From_Office']
+
+# 4) 수치형과 범주형 결합
+import numpy as np
+X_num = df_sel[['Avg_Working_Hours_Per_Day']].values
+X = np.hstack([X_num, X_cat])
+y = df_sel[target_col].values
+
+# 5) train/val 분할
+from sklearn.model_selection import train_test_split
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 6) 스케일링
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_val_scaled = scaler.transform(X_val)
+
+# 7) RandomForest 학습
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+rf.fit(X_train_scaled, y_train)
+
+# 8) 평가
+y_pred = rf.predict(X_val_scaled)
+val_acc = accuracy_score(y_val, y_pred)
+
+print(f"\n✅ Validation Accuracy: {val_acc:.4f}\n")
+print("📄 Classification Report:")
+print(classification_report(y_val, y_pred, digits=4))
+
+
+
+**-------------------------------------------------------------------------------- [Average working hours per day, job satisfaction, Work life balance] --------------------------------------------------------------------------------**
+
+# 1) 선택 피처
+selected_feats = ['Avg_Working_Hours_Per_Day', 'Work_Life_Balance', 'Job_Satisfaction']
+target_col = 'Stress_Level'
+
+# 2) 데이터프레임 준비
+df_sel = df[selected_feats + [target_col]].copy()
+df_sel['Stress_Level'] = df_sel['Stress_Level'] - 1  # 라벨: 0~4
+
+# 3) One-Hot 인코딩 (Work_Life_Balance: Yes/No)
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder(drop='first', sparse_output=False)
+X_cat = ohe.fit_transform(df_sel[['Work_Life_Balance']])
+cat_cols = ohe.get_feature_names_out(['Work_Life_Balance'])  # 예: ['Work_Life_Balance_Yes']
+
+# 4) 수치형 피처 결합
+import numpy as np
+X_num = df_sel[['Avg_Working_Hours_Per_Day', 'Job_Satisfaction']].values
+X = np.hstack([X_num, X_cat])
+y = df_sel[target_col].values
+
+# 5) 학습/검증 분할
+from sklearn.model_selection import train_test_split
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 6) 스케일링
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_val_scaled = scaler.transform(X_val)
+
+# 7) 모델 학습
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+rf.fit(X_train_scaled, y_train)
+
+# 8) 평가
+y_pred = rf.predict(X_val_scaled)
+val_acc = accuracy_score(y_val, y_pred)
+
+print(f"\n✅ Validation Accuracy: {val_acc:.4f}\n")
+print("📄 Classification Report:")
+print(classification_report(y_val, y_pred, digits=4))
+
+
+
+**-------------------------------------------------------------------------------- [Average working hours per day, Sleeping habit] --------------------------------------------------------------------------------**
+
+# 1) 선택 피처
+selected_feats = ['Avg_Working_Hours_Per_Day', 'Sleeping_Habit']
+target_col = 'Stress_Level'
+
+# 2) 데이터셋 준비
+df_sel = df[selected_feats + [target_col]].copy()
+df_sel['Stress_Level'] = df_sel['Stress_Level'] - 1  # 라벨: 0~4
+
+
+# 3) X, y 분리
+X = df_sel[selected_feats].values
+y = df_sel[target_col].values
+
+# 4) 학습/검증 분할
+from sklearn.model_selection import train_test_split
+X_train, X_val, y_train, y_val = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 5) 스케일링
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_val_scaled = scaler.transform(X_val)
+
+# 6) 모델 학습
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+rf = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42)
+rf.fit(X_train_scaled, y_train)
+
+# 7) 예측 및 평가
+y_pred = rf.predict(X_val_scaled)
+val_acc = accuracy_score(y_val, y_pred)
+
+print(f"\n✅ Validation Accuracy: {val_acc:.4f}\n")
+print("📄 Classification Report:")
+print(classification_report(y_val, y_pred, digits=4))
